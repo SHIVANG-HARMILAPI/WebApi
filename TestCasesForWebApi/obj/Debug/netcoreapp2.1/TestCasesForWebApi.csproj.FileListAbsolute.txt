@@ -1,0 +1,17 @@
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.csprojAssemblyReference.cache
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.csproj.CoreCompileInputs.cache
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.AssemblyInfoInputs.cache
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.AssemblyInfo.cs
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\TestCasesForWebApi.deps.json
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\TestCasesForWebApi.runtimeconfig.json
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\TestCasesForWebApi.runtimeconfig.dev.json
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\TestCasesForWebApi.dll
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\TestCasesForWebApi.pdb
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.csproj.CopyComplete
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.dll
+C:\Users\shharmilapi\source\repos\WebApi\TestCasesForWebApi\obj\Debug\netcoreapp2.1\TestCasesForWebApi.pdb
