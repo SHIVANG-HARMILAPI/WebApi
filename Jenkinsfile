@@ -28,11 +28,6 @@ pipeline {
             defaultValue: '',
             description: ''    
         ) 
-        string (
-            name : 'TEST_PROJECT_FILE',
-            defaultValue: '',
-            description: ''    
-        ) 
         choice(
         name: 'RELEASE_ENVIRONMENT',
         choices: "Build\nTest",
@@ -63,7 +58,7 @@ pipeline {
         steps {    
             sh'''
             echo'====================Test Execution started============='
-            dotnet${NETCORE_VERSION} test ${TEST_PROJECT_PATH}/${TEST_PROJECT_FILE}
+            dotnet${NETCORE_VERSION} test ${TEST_PROJECT_PATH}
             echo'====================Test Execution completed============='
             '''
         }
