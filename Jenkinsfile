@@ -45,7 +45,6 @@ pipeline {
               expression { "${RELEASE_ENVIRONMENT}" == 'Build' }                
         }
       steps {
-        setAWSCredential(account,region)
         sh'''
             echo '=======================Restore Project Start======================='
             dotnet${NETCORE_VERSION} restore ${SOLUTION_FILE} --source https://api.nuget.org/v3/index.json
@@ -68,11 +67,6 @@ pipeline {
             echo'====================Test Execution completed============='
             '''
         }
-    }
-  }
-  post{
-    always{
-    deleteDir()
     }
   }
 }
