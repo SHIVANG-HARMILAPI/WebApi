@@ -57,9 +57,7 @@ pipeline {
        }
         steps {    
             sh'''
-            echo'====================Test Execution started============='
-            dotnet${NETCORE_VERSION} test ${TEST_PROJECT_PATH}
-            echo'====================Test Execution completed============='
+              dotnet${NETCORE_VERSION} test ${TEST_PROJECT_PATH}
             '''
         }
     }
