@@ -1,67 +1,181 @@
-pipeline {
-  environment {
-    RELEASE_ENVIRONMENT = "${params.RELEASE_ENVIRONMENT}"
-  }
+pipeline{
 
-  agent { label 'master'
-  }
+    agent { label 'master' }
 
-  parameters {
-        string (
-            name : 'GIT_SSH_PATH',
-            defaultValue: '',
-            description: ''
-        )            
-            
-         string (
-            name : 'SOLUTIION_FILE',
-            defaultValue: 'develop',
-            description: ''    
+    parameters{
+
+        string(
+
+            name: "GIT_HTTPS_PATH",
+
+            defaultValue: "https://github.com/SHIVANG-HARMILAPI/WebApi.git",
+
+            description: "GIT HTTPS PATH"
+
         )
-        string (
-            name : 'NETCORE_VERSION',
-            defaultValue: '',
-            description: ''    
+
+        string(
+
+            name: "SOLUTION_PATH",
+
+            defaultValue: "WebApi.sln",
+
+            description: "SOLUTION_PATH"
+
         )
-        string (
-            name : 'TEST_PROJECT_PATH',
-            defaultValue: '',
-            description: ''    
-        ) 
+
+        string(
+
+            name: "DOTNETCORE_VERSION",
+
+            defaultValue: "2.2",
+
+            description: "Version"
+
+        )
+
+        string(
+
+            name: "TEST_SOLUTION_PATH",
+
+            defaultValue: "TestCasesForWebApi/TestCasesForWebApi.csproj",
+
+            description: "TEST SOLUTION PATH"
+
+        )
+
+        
+
+        string(
+
+            name: "PROJECT_PATH",
+
+            defaultValue: "WebApi/WebApi.csproj",
+
+            description: "PROJECT PATH"
+
+        )
+
         choice(
-        name: 'RELEASE_ENVIRONMENT',
-        choices: "Build\nTest",
-        description: '' 
-        ) 
-    }
- stages {
-    stage('Build') {
-      when {
-              expression { "${RELEASE_ENVIRONMENT}" == 'Build' }                
-        }
-      steps {
-        powershell'''
-            echo '=======================Restore Project Start======================='
-            dotnet${NETCORE_VERSION} restore ${SOLUTION_FILE} --source https://api.nuget.org/v3/index.json
-            echo '=====================Restore Project Completed===================='
 
-            echo '=======================Build Project Start======================='
-            dotnet${NETCORE_VERSION} build ${SOLUTION_FILE} -p:Configuration=release -v:q
-            echo '=====================Build Project Completed===================='
-        '''
-      }
+            name: "RELEASE_ENVIRONMENT",
+
+            choices: ["Build","Test", "Publish"],
+
+            description: "Tick what you want to do"
+
+        )
+
     }
-    stage('Test') {
-       when {
-              expression { "${RELEASE_ENVIRONMENT}" == 'Test' }
+
+    stages{
+
+        stage('Build'){
+
+            when{
+
+                expression{params.RELEASE_ENVIRONMENT == "Build" || params.RELEASE_ENVIRONMENT == "Test" || params.RELEASE_ENVIRONMENT == "Publish"}
+
+            }
+
+            steps{
+
+                powershell '''
+
+                    echo '====================Build Project Start ================'
+
+                    dotnet restore ${SOLUTION_PATH} --source https://api.nuget.org/v3/index.json
+
+                    echo '=====================Build Project Completed============'
+
+                    echo '====================Build Project Start ================'
+
+                    dotnet build ${PPOJECT_PATH} 
+
+                    echo '=====================Build Project Completed============'
+
+                '''
+
+            }
+
+        }
+
+        stage('Test'){
+
+            when{
+
+                expression{params.RELEASE_ENVIRONMENT == "Test" || params.RELEASE_ENVIRONMENT == "Publish"}
+
+            }
+
+            steps{
+
+                powershell '''
+
+                    echo '====================Build Project Start ================'
+
+                    dotnet test ${TEST_SOLUTION_PATH}
+
+                    echo '=====================Build Project Completed============'
+
+                '''
+
+            }
+
+        }
+
+        stage('Publish'){
+
+            when{
+
+                expression{params.RELEASE_ENVIRONMENT == "Publish"}
+
+            }
+
+            steps{
+
+                powershell '''
+
+                    echo '====================Build Project Start ================'
+
+                    dotnet publish ${PROJECT_PATH}
+
+                    echo '=====================Build Project Completed============'
+
+                '''
+
+            }
+
+        }
+
+        stage ('push artifact') {
+
+            when{
+
+                expression{params.RELEASE_ENVIRONMENT == "Publish"}
+
+            }
+
+            steps {
+
+                zip zipFile: 'publish.zip', archive: false, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
+
+                archiveArtifacts artifacts: 'publish.zip', fingerprint: true
+
+            }
+
+        }
+
+    }
+
+    post{
+
+        always{
+
+            deleteDir()
+
        }
-        steps {    
-            powershell'''
-              dotnet${NETCORE_VERSION} test ${TEST_PROJECT_PATH}
-            '''
-        }
+
     }
-  }
+
 }
-
-
