@@ -40,7 +40,7 @@ pipeline {
               expression { "${RELEASE_ENVIRONMENT}" == 'Build' }                
         }
       steps {
-        sh'''
+        powershell'''
             echo '=======================Restore Project Start======================='
             dotnet${NETCORE_VERSION} restore ${SOLUTION_FILE} --source https://api.nuget.org/v3/index.json
             echo '=====================Restore Project Completed===================='
@@ -56,7 +56,7 @@ pipeline {
               expression { "${RELEASE_ENVIRONMENT}" == 'Test' }
        }
         steps {    
-            sh'''
+            powershell'''
               dotnet${NETCORE_VERSION} test ${TEST_PROJECT_PATH}
             '''
         }
