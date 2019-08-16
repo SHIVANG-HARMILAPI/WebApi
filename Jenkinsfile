@@ -28,7 +28,7 @@ pipeline{
 
             name: "DOTNETCORE_VERSION",
 
-            defaultValue: "2.2",
+            defaultValue:'' ,
 
             description: "Version"
 
@@ -158,7 +158,7 @@ pipeline{
             steps{
                 script {
 
-                    zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
+                    zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.1'
     
                     archiveArtifacts artifacts: 'publish.zip', fingerprint: true
     
