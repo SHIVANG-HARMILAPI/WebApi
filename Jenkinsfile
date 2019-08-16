@@ -156,7 +156,7 @@ pipeline{
 
             }
 
-            steps {
+            script {
 
                 zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
 
