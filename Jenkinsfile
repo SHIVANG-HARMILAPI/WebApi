@@ -148,24 +148,16 @@ pipeline{
 
         }
 
-        stage ('push artifact') {
-
-            when{
-
-                expression{params.RELEASE_ENVIRONMENT == "Publish"}
-
-            }
+        
+        stage('Run')
+        {
             steps{
-                script {
-
-                    zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.1'
-    
-                    archiveArtifacts artifacts: 'publish.zip', fingerprint: true
-    
-                }
+            powershell' dotnet run 
             }
+        
         }
-
+        
+        
     }
 
     post{
