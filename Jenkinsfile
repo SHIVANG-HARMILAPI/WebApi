@@ -158,7 +158,7 @@ pipeline{
 
             steps {
 
-                zip zipFile: 'publish.zip', archive: false, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
+                zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
 
                 archiveArtifacts artifacts: 'publish.zip', fingerprint: true
 
