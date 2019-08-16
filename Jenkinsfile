@@ -152,7 +152,7 @@ pipeline{
         stage('Run')
         {
             steps{
-            powershell' dotnet run --project C:\Program Files (x86)\Jenkins\workspace\pipeline_ci_cd '
+            powershell' dotnet run --project C:/Program Files (x86)/Jenkins/workspace/pipeline_ci_cd '
             }
         
         }
