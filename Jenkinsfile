@@ -155,15 +155,15 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Publish"}
 
             }
+            steps{
+                script {
 
-            script {
-
-                zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
-
-                archiveArtifacts artifacts: 'publish.zip', fingerprint: true
-
+                    zip zipFile: 'publish.zip', archive: true, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
+    
+                    archiveArtifacts artifacts: 'publish.zip', fingerprint: true
+    
+                }
             }
-
         }
 
     }
